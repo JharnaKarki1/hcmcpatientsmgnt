@@ -30,7 +30,7 @@ public class PatientServiceImpl implements PatientService  {
 	 }
 	 @Override
     public List<Patient> getAllPatients(){
-    	var patients = patientRepository.findAll();
+    	var patients = patientRepository.findAll(Sort.by("fullNames"));
     	return patients;
     }
     
