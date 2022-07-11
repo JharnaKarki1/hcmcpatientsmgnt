@@ -33,6 +33,27 @@ public class PatientServiceImpl implements PatientService  {
     	var patients = patientRepository.findAll(Sort.by("fullNames"));
     	return patients;
     }
+	 
+
+	@Override
+	public Patient getPatientById(Long patientId) {
+		// TODO Auto-generated method stub
+		return patientRepository.findById(patientId)
+                .orElse(null);
+	}
+
+	@Override
+	public Patient updatePatient(Patient updatedPatient) {
+		// TODO Auto-generated method stub
+		return patientRepository.save(updatedPatient);
+	}
+
+	@Override
+	public void deletePatientById(Long patientId) {
+		// TODO Auto-generated method stub
+		 patientRepository.deleteById(patientId);
+		
+	}
     
 
 
