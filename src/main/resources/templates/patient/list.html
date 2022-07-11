@@ -33,6 +33,8 @@
             <th>Contact Phone Number</th>
             <th>Date of birth</th>
             <th>OutPatient?</th>
+              <th>Primary Address</th>
+            
         </tr>
         </thead>
          <tbody>
@@ -44,6 +46,7 @@
             <td th:text="${patient.contactPhoneNumber}"></td>
             <td th:text="${patient.dateOfBirth}"></td>
             <td th:text="${patient.isAnOutPatient}"></td>
+             <td th:text="${patient.primaryAddress}">
         </tr>
         </tbody>
     </table>

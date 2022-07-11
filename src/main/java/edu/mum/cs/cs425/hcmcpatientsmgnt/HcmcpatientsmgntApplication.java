@@ -8,17 +8,21 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import edu.mum.cs.cs425.hcmcpatientsmgnt.model.Patient;
+import edu.mum.cs.cs425.hcmcpatientsmgnt.model.PrimaryAddress;
 import edu.mum.cs.cs425.hcmcpatientsmgnt.repository.PatientRepository;
 import edu.mum.cs.cs425.hcmcpatientsmgnt.service.PatientService;
+import edu.mum.cs.cs425.hcmcpatientsmgnt.service.PrimaryAddressService;
 
 @SpringBootApplication
-public class HcmcpatientsmgntApplication implements CommandLineRunner{
-	//public class HcmcpatientsmgntApplication {	
+//public class HcmcpatientsmgntApplication implements CommandLineRunner{
+	public class HcmcpatientsmgntApplication {	
 	
-	private PatientService patientService;
-	public HcmcpatientsmgntApplication (PatientService patientService) {
-		this.patientService = patientService;
-	}
+//	private PatientService patientService;
+//	private PrimaryAddressService primaryAddressService;
+//	public HcmcpatientsmgntApplication (PatientService patientService,PrimaryAddressService primaryAddressService) {
+//		this.patientService=patientService;
+//		this.primaryAddressService = primaryAddressService;
+//	}
 	
 	
 	public static void main(String[] args) {
@@ -26,22 +30,22 @@ public class HcmcpatientsmgntApplication implements CommandLineRunner{
 	}
 
 //	@Override
-	public void run(String... args) throws Exception {
+	//public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 	
-		System.out.println("hello Program Started");
-		Patient p1 = new Patient("P1000001","Yes","John H. Smith", "jhsmith@globalmail.net",
-				"(641)-001-0012", LocalDate.of(1959,5,21));
-		//System.out.println(createNewPatient(p1));
-		Patient p2 = new Patient("EP1000002","Yes","Ann-Marie Washington",
-                "awashington@hcmc.org","(641) 002-0034",LocalDate.of(1949,12,3));
-		createNewPatient(p2);
-        Patient p3 = new Patient("EP1000003","No","Diego A. Ortiz ","diego@gmail.com",
-                "(641) 004-0015",LocalDate.of(1979,11,14));
-        createNewPatient(p3);
-        Patient p4 = new Patient("EP1000004","No","Jharna ",null,
-                "(641) 004-0017",LocalDate.of(1998,11,14));
-        createNewPatient(p4);
+	//	System.out.println("hello Program Started");
+//		Patient p1 = new Patient("P1000001","Yes","John H. Smith", "jhsmith@globalmail.net",
+//				"(641)-001-0012", LocalDate.of(1959,5,21));
+//		//System.out.println(createNewPatient(p1));
+//		Patient p2 = new Patient("EP1000002","Yes","Ann-Marie Washington",
+//                "awashington@hcmc.org","(641) 002-0034",LocalDate.of(1949,12,3));
+//		createNewPatient(p2);
+//        Patient p3 = new Patient("EP1000003","No","Diego A. Ortiz ","diego@gmail.com",
+//                "(641) 004-0015",LocalDate.of(1979,11,14));
+//        createNewPatient(p3);
+//        Patient p4 = new Patient("EP1000004","No","Jharna ",null,
+//                "(641) 004-0017",LocalDate.of(1998,11,14));
+//        createNewPatient(p4);
 
 //		patientRepository.save(p1);
 //		patientRepository.save(p2);
@@ -51,38 +55,11 @@ public class HcmcpatientsmgntApplication implements CommandLineRunner{
 		//printAllPatients();
 //		printPatientById((long) 1);
 //		printPatientById((long) 10);
-//		updateAndPrintPatientById((long) 1);
+	//	updateAndPrintPatientById((long) 1);
 //		printPatientById((long) 1);
 	//deletePatientById((long) 4);
-		printAllPatients();
-	}
-	private Patient createNewPatient(Patient patient) {
-		return patientService.addNewPatient(patient);
-	}
-	private void printAllPatients() {
-		var patients= patientService.getAllPatients();
-		patients.forEach(System.out::println);
-	}
-	private void printPatientById(Long patientId) {
-		var patient= patientService.getPatientById(patientId);
-		if(patient != null) {
-			System.out.println(patient);
-		}else {
-			System.out.printf("Patient with id: %d not found \n", patientId);
-		}
-	}
-	
-	  private void updateAndPrintPatientById(Long patientId) { // U: Update
-	        var patient = patientService.getPatientById(patientId);
-	       patient.setFullNames("John H. Smith Inc");
-	 
-
-	        var updatedPublisher = patientService.updatePatient(patient);
-	        System.out.println(updatedPublisher);
-	    }
-	  private void deletePatientById(Long patientId) { // D: Delete
-		  patientService.deletePatientById(patientId);
-	    }
-	
+	//	printAllPatients();
+		//printAllPrimaryAddresses();
+	//}
 
 }

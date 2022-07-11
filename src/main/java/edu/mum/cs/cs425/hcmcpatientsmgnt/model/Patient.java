@@ -2,11 +2,14 @@ package edu.mum.cs.cs425.hcmcpatientsmgnt.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -40,6 +43,10 @@ public class Patient {
 	private String contactPhoneNumber;
 	@Column(nullable = false)
 	private LocalDate dateOfBirth;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="primary_addr_id", nullable= true)
+	private PrimaryAddress primaryAddress;
 
 	public Patient( String patientNumber, String isAnOutPatient, String fullNames, String emailAddress,
 			String contactPhoneNumber, LocalDate dateOfBirth) {
@@ -108,6 +115,13 @@ public class Patient {
 	public void setDateOfBirth(LocalDate dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
+	public PrimaryAddress getPrimaryAddress() {
+        return primaryAddress;
+    }
+
+    public void setPrimaryAddress(PrimaryAddress primaryAddress) {
+        this.primaryAddress = primaryAddress;
+    }
 
 
 
@@ -115,7 +129,12 @@ public class Patient {
 	public String toString() {
 		return "Patient [patientId=" + patientId + ", patientNumber=" + patientNumber + ", isAnOutPatient="
 				+ isAnOutPatient + ", fullNames=" + fullNames + ", emailAddress=" + emailAddress
-				+ ", contactPhoneNumber=" + contactPhoneNumber + ", dateOfBirth=" + dateOfBirth + "]";
+				+ ", contactPhoneNumber=" + contactPhoneNumber + ", dateOfBirth=" + dateOfBirth + ", primaryAddress="
+				+ primaryAddress + "]";
 	}
+
+
+
+
 
 }
